@@ -1,0 +1,6 @@
+env: production
+db_host: prod-db-1.orb.local
+web_hosts:
+  - prod-web-1.orb.local
+  - prod-web-2.orb.local
+  - prod-web-3.orb.local

@@ -1,0 +1,4 @@
+- name: Reload PHP-FPM
+  systemd:
+    name: php8.1-fpm
+    state: reloaded

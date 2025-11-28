@@ -1,0 +1,12 @@
+- name: Déployer l’infrastructure web
+  hosts: web
+  become: yes
+  roles:
+    - nginx
+    - php
+
+- name: Déployer la base de données
+  hosts: db
+  become: yes
+  roles:
+    - mysql

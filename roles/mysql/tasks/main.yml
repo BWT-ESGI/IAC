@@ -1,0 +1,35 @@
+- name: Installer les dépendances Python pour MySQL
+  apt:
+    name: python3-mysqldb
+    state: present
+    update_cache: yes
+
+- name: Installer MySQL
+  apt:
+    name: mysql-server
+    state: present
+    update_cache: yes
+
+- name: Activer et démarrer MySQL
+  systemd:
+    name: mysql
+    state: started
+    enabled: yes
+
+- name: Créer la base kapsulekorp
+  mysql_db:
+    name: kapsulekorp
+    state: present
+    login_user: "{{ mysql_root_user }}"
+    login_password: "{{ mysql_root_password }}"
+
+- name: Créer l'utilisateur MySQL kapsule
+  mysql_user:
+    name: kapsule
+    password: "{{ mysql_root_password }}"
+    priv: "kapsulekorp.*:ALL"
+    host: "%"
+    state: present
+    login_user: "{{ mysql_root_user }}"
+    login_password: "{{ mysql_root_password }}"
+

@@ -1,0 +1,13 @@
+- name: Installer Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Activer et démarrer Nginx
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes
+
+- include_tasks: config.yml

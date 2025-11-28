@@ -1,0 +1,15 @@
+- name: Installer PHP et PHP-FPM
+  apt:
+    name:
+      - php8.1
+      - php8.1-fpm
+      - php8.1-mysql
+    state: present
+    update_cache: yes
+
+- name: Activer et démarrer PHP-FPM
+  systemd:
+    name: php8.1-fpm
+    state: started
+    enabled: yes
+

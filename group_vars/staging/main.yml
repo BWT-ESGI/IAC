@@ -1,0 +1,5 @@
+env: staging
+db_host: stg-db-1.orb.local
+web_hosts:
+  - stg-web-1.orb.local
+  - stg-web-2.orb.local
